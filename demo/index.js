@@ -31,7 +31,12 @@
     }, false);
 
     compress.addEventListener('click', function (e) {
-        fileReader.readAsDataURL(file);
+        e.preventDefault();
+        if(file && (/\.png|\.jpg|\.jpeg/).test(file.name)){
+            fileReader.readAsDataURL(file);
+            return;
+        }
+        alert('Choose image file');
     }, false);
 
     function resultProcessor (src) {
