@@ -1,10 +1,10 @@
-(function (window) {
+(function (win, doc) {
 
     var compressor = new ImageCompressor,
         fileReader = new FileReader,
-        widthEl = document.getElementById('width'),
-        heightEl = document.getElementById('height'),
-        compress = document.getElementById('compress'),
+        widthEl = doc.getElementById('width'),
+        heightEl = doc.getElementById('height'),
+        compress = doc.getElementById('compress'),
         width,
         height,
         file;
@@ -18,7 +18,7 @@
             quality : 1
         }, resultProcessor);
     };
-    document.getElementById('image').addEventListener('change', function (e) {
+    doc.getElementById('image').addEventListener('change', function (e) {
         file = e.target.files.length ? e.target.files[0] : null;
     }, false);
 
@@ -40,6 +40,6 @@
     }, false);
 
     function resultProcessor (src) {
-        document.getElementById('result').src = src;
+        doc.getElementById('result').src = src;
     }
-})(window);
+})(window, document);

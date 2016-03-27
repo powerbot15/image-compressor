@@ -75,6 +75,6 @@
 
     };
 
-    window.ImageCompressor = ImageCompressor;
+    win.ImageCompressor = ImageCompressor;
 
 })(window, document);
