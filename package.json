@@ -1,0 +1,25 @@
+{
+  "name": "image-compressor",
+  "version": "1.0.0",
+  "description": "Frontend javascript module for resizing and compressing images",
+  "main": "image-compressor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerbot15/image-compressor.git"
+  },
+  "keywords": [
+    "javascript",
+    "image",
+    "resize",
+    "compress"
+  ],
+  "author": "Oleh Kastornov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/powerbot15/image-compressor/issues"
+  },
+  "homepage": "https://github.com/powerbot15/image-compressor#readme"
+}
