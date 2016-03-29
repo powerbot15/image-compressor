@@ -27,6 +27,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             toWidth : 100,
             toHeight : 100,
             mimeType : 'image/png',
+            mode : 'strict'
             quality : 0.6
         };
     
@@ -49,6 +50,8 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   `imageSrc` : Source of the image to compress/resize. Enabled dataURL or image src url. ***Be careful with CORS restrictions!*** 
   
   `compressorSettings` : Object with the compression settings. Enabled fields : 
+  
+  `compressorSettings.mode` : Values `strict`, `stretch`. **_Strict mode_** disables dimensional distortions, **_stretch mode_** stretches or squeezes original image to fit result sizes
   
   `compressorSettings.toWidth` : Width in pixels of the result (compressed/stretched) image,
   

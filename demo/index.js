@@ -15,6 +15,7 @@
             toWidth : width,
             toHeight : height,
             mimeType : 'image/png',
+            mode : 'strict',
             quality : 1
         }, resultProcessor);
     };

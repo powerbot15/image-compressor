@@ -1,3 +1,10 @@
+/**
+ * Author: Oleh Kastornov
+ * ver 1.0.5
+ * Ukraine
+ */
+
+
 (function(win, doc){
 
     function ImageCompressor () {
@@ -6,6 +13,7 @@
             toWidth : 100,
             toHeight : 100,
             mimeType : 'image/png',
+            mode : 'strict',
             quality : 1
         };
 
@@ -35,6 +43,7 @@
             this.settings.toWidth = settings.toWidth || this.settings.toWidth;
             this.settings.toHeight = settings.toHeight || this.settings.toHeight;
             this.settings.mimeType = settings.mimeType || this.settings.mimeType;
+            this.settings.mode = (settings.mode == 'strict' || settings.mode == 'stretch') ?  settings.mode : this.settings.mode;
             this.imageReceiver = callback;
 
             this.image.src = src;
@@ -49,20 +58,35 @@
             this.context.fillStyle = this.settings.mimeType == 'image/png' ? 'rgba(255, 255, 255, 0)' : '#FFFFFF';
             this.context.fillRect(0, 0, this.settings.toWidth, this.settings.toHeight);
 
+            if(this.settings.mode == 'strict'){
+                this.strictResize();
+            }
+            if(this.settings.mode == 'stretch'){
+                this.stretchResize();
+            }
+
+            this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
+
+        },
+
+        strictResize : function () {
             if ( this.naturalAR >= this.compressedAR ) {
                 this.fitWidth();
             }
             else{
                 this.fitHeight();
             }
+        },
 
-            this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
+        stretchResize : function () {
+            this.context.drawImage(this.image, 0, 0, this.settings.toWidth, this.settings.toHeight);
         },
 
         fitWidth : function () {
             var compressedHeight = this.settings.toWidth / this.naturalAR,
                 offsetX = 0,
                 offsetY = (this.settings.toHeight - compressedHeight) / 2;
+
             this.context.drawImage(this.image, offsetX, offsetY, this.settings.toWidth, compressedHeight);
         },
 
@@ -70,6 +94,7 @@
             var compressedWidth = this.settings.toHeight * this.naturalAR,
                 offsetY = 0,
                 offsetX = (this.settings.toWidth - compressedWidth) / 2;
+
             this.context.drawImage(this.image, offsetX, offsetY, compressedWidth, this.settings.toHeight);
         }
 
