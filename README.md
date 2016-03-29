@@ -27,7 +27,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             toWidth : 100,
             toHeight : 100,
             mimeType : 'image/png',
-            mode : 'strict'
+            mode : 'strict',
             quality : 0.6
         };
     
