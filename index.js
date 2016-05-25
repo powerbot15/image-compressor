@@ -14,7 +14,7 @@
         compressor.run(fileReader.result, {
             toWidth : width,
             toHeight : height,
-            mimeType : 'image/png',
+            mimeType : 'image/jpeg',
             quality : 1
         }, resultProcessor);
     };
