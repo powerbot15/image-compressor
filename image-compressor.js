@@ -5,7 +5,7 @@
         this.settings = {
             toWidth : 100,
             toHeight : 100,
-            mimeType : 'image/jpeg',
+            mimeType : 'image/png',
             quality : 1
         };
 
