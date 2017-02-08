@@ -104,6 +104,8 @@
 
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
 
+            this.compressedCanv = null;
+
         },
 
         firstCompress : function () {
@@ -143,20 +145,11 @@
 
             }
 
-            // canvas.width = w * 2;
-
-            // canvas.height = h * 2;
-
             this.compressedCanv = canvas;
 
             this.compressedW = w * 2;
 
             this.compressedH = h * 2;
-            // this.canvas.width = w * 2;
-            //
-            // this.canvas.height = h * 2;
-            //
-            // this.context.drawImage(canvas, 0, 0, this.canvas.width, this.canvas.height, 0, 0, this.canvas.width, this.canvas.height);
 
         },
 
