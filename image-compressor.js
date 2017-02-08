@@ -56,6 +56,7 @@
             this.settings.toHeight = settings.toHeight || this.settings.toHeight;
             this.settings.mimeType = settings.mimeType || this.settings.mimeType;
             this.settings.mode = (settings.mode == 'strict' || settings.mode == 'stretch') ?  settings.mode : this.settings.mode;
+            this.settings.speed = settings.speed || this.settings.speed;
             this.imageReceiver = callback;
 
             this.image.src = src;
