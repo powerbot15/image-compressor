@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<main>
-    <section>
-        <label for="image">Select image</label> <input type="file" id="image">
-    </section>
-    <section>
-        <label for="width">Width : </label> <input type="text" id="width">
-        <label for="height">Height : </label> <input type="text" id="height">
-        <a href="#" id="compress"> Compress </a>
-    </section>
-    <section>
-        <img src="#" alt="Result" id="result">
-    </section>
+<h1>Image Compressor</h1>
+<div>
+    <label for="image">Select image</label> <input type="file" id="image">
+</div>
+<div class="original-img">
+    <img id="original" src="#" alt="Original image to compress">
+</div>
 
+<div>
+    <label for="width">Width : </label> <input type="text" id="width">
+    <label for="height">Height : </label> <input type="text" id="height">
+    <label for="speed">Quality : </label>
+    <select name="speed" id="speed">
+        <option value="low" selected>High</option>
+        <option value="high">Low</option>
+    </select>
+    <a href="#" id="compress"> Compress </a>
+</div>
+<div>
+    <img src="#" alt="Compressed image" id="result">
+</div>
 
-</main>
 <script src="../image-compressor.js"></script>
 <script src="index.js"></script>
 </body>
