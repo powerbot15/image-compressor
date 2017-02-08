@@ -5,22 +5,26 @@
         widthEl = doc.getElementById('width'),
         heightEl = doc.getElementById('height'),
         compress = doc.getElementById('compress'),
+        originalImg = doc.getElementById('original'),
+        speedEl = doc.getElementById('speed'),
         width,
         height,
-        file;
+        file,
+        imageRead;
 
     fileReader.onloadend = function () {
 
-        compressor.run(fileReader.result, {
-            toWidth : width,
-            toHeight : height,
-            mimeType : 'image/png',
-            mode : 'strict',
-            quality : 1
-        }, resultProcessor);
+        imageRead = fileReader.result;
+
+        originalImg.src = imageRead;
+
     };
     doc.getElementById('image').addEventListener('change', function (e) {
+
         file = e.target.files.length ? e.target.files[0] : null;
+        if(file){
+            fileReader.readAsDataURL(file);
+        }
     }, false);
 
     widthEl.addEventListener('input', function (e) {
@@ -31,10 +35,19 @@
         height = parseInt(e.target.value);
     }, false);
 
+
     compress.addEventListener('click', function (e) {
         e.preventDefault();
         if(file && (/\.png|\.jpg|\.jpeg/).test(file.name)){
-            fileReader.readAsDataURL(file);
+
+            compressor.run(imageRead, {
+                toWidth : width,
+                toHeight : height,
+                mimeType : 'image/jpeg',
+                quality : 1,
+                speed: speedEl.value
+            }, resultProcessor);
+
             return;
         }
         alert('Choose image file');
