@@ -5,7 +5,7 @@
 **Image compressor** uses canvas in the background for resizing operations. Result image has no dimensional distortions, original image is being compressed with the original aspect ratio. 
 Original image is centered in the result image. Free space can appear aside of result image due to possible different aspect ratios of original and compressed images. 
 Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. For `image/png` free space aside result image filled transparently.
-[Example](https://github.com/powerbot15/image-compressor/tree/master/demo)
+[Demo](http://powerbot15.github.io/image-compressor/)
 
 ## INSTALLATION
 
@@ -27,6 +27,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             toWidth : 100,
             toHeight : 100,
             mimeType : 'image/png',
+            mode : 'strict',
             quality : 0.6
         };
     
@@ -49,6 +50,8 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   `imageSrc` : Source of the image to compress/resize. Enabled dataURL or image src url. ***Be careful with CORS restrictions!*** 
   
   `compressorSettings` : Object with the compression settings. Enabled fields : 
+  
+  `compressorSettings.mode` : Values `strict`, `stretch`. **_Strict mode_** disables dimensional distortions, **_stretch mode_** stretches or squeezes original image to fit result sizes
   
   `compressorSettings.toWidth` : Width in pixels of the result (compressed/stretched) image,
   
