@@ -30,7 +30,8 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             toHeight : 100,
             mimeType : 'image/png',
             mode : 'strict',
-            quality : 0.6
+            quality : 0.6,
+            speed : 'high'
         };
     
     ...
@@ -58,16 +59,16 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   **`compressorSettings.mode`** : Values `strict`, `stretch`. **_Strict mode_** disables dimensional distortions, **_stretch mode_** stretches or squeezes original image to fit result sizes
   
   
-  **`compressorSettings.toWidth`** : Width in pixels of the result (compressed/stretched) image,
+  **`compressorSettings.toWidth`** : Width in pixels of the result (compressed/stretched) image, **default : `100`**
   
   
-  **`compressorSettings.toHeight`** : Height in pixels of the result (compressed/stretched) image,
+  **`compressorSettings.toHeight`** : Height in pixels of the result (compressed/stretched) image, **default : `100`**
   
   
-  **`compressorSettings.mimeType`** : Mime type of the result (compressed/stretched) image, allowed values `image/png`, `image/jpeg`,
+  **`compressorSettings.mimeType`** : Mime type of the result (compressed/stretched) image, allowed values `image/png`, `image/jpeg`, **default : `"image/png"`**  
   
   
-  **`compressorSettings.quality`** : Quality of the result (compressed/stretched) image, allowed values `0-1` with step `0.1`. So `0.5` or `0.8` - correct values , `0.35` or `2` - incorrect values
+  **`compressorSettings.quality`** : Quality of the result (compressed/stretched) image, allowed values `0-1` with step `0.1`. So `0.5` or `0.8` - correct values , `0.35` or `2` - incorrect values, **default : `1`**
   
   
-  **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality)    
+  **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality). **Default : `"low""`**     
