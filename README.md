@@ -7,7 +7,7 @@ Original image is centered in the result image. Free space can appear aside of r
 Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. For `image/png` free space aside result image filled transparently.
 [Demo](http://powerbot15.github.io/image-compressor/)
 
-**Image compressor** uses step-down algorithm for scaling down images. That means an image gets compressed for some discrete steps. Within each of steps image gets compressed by a half(original size : `width`, `height`, size after first step is `width / 2`, `height / 2` ). Such stepping allows limited interpolation on compressed image and gives more similar to original image result
+**Image compressor** uses step-down algorithm for scaling down images. That means an image gets compressed for some discrete steps. Within each step image gets compressed by a half(original size : `width`, `height`, size after first step is `width / 2`, `height / 2` ). Such stepping allows limited interpolation on compressed image and gives more similar to original image result
 
 ## INSTALLATION
 
