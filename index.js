@@ -6,6 +6,7 @@
         heightEl = doc.getElementById('height'),
         compress = doc.getElementById('compress'),
         originalImg = doc.getElementById('original'),
+        speedEl = doc.getElementById('speed'),
         width,
         height,
         file,
@@ -34,6 +35,7 @@
         height = parseInt(e.target.value);
     }, false);
 
+
     compress.addEventListener('click', function (e) {
         e.preventDefault();
         if(file && (/\.png|\.jpg|\.jpeg/).test(file.name)){
@@ -43,7 +45,7 @@
                 toHeight : height,
                 mimeType : 'image/jpeg',
                 quality : 1,
-                speed: 'high'
+                speed: speedEl.value
             }, resultProcessor);
 
             return;
