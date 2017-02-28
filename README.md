@@ -31,7 +31,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             mimeType : 'image/png',
             mode : 'strict',
             quality : 0.6,
-            speed : 'high'
+            speed : 'low'
         };
     
     ...
