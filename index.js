@@ -7,6 +7,10 @@
         compress = doc.getElementById('compress'),
         originalImg = doc.getElementById('original'),
         speedEl = doc.getElementById('speed'),
+        originalSize = {
+            widthEl : doc.getElementById('origin-width'),
+            heightEl : doc.getElementById('origin-height')
+        },
         width,
         height,
         file,
@@ -19,6 +23,8 @@
         originalImg.src = imageRead;
 
     };
+    originalImg.addEventListener('load', setOriginalSize);
+
     doc.getElementById('image').addEventListener('change', function (e) {
 
         file = e.target.files.length ? e.target.files[0] : null;
@@ -56,4 +62,10 @@
     function resultProcessor (src) {
         doc.getElementById('result').src = src;
     }
+
+    function setOriginalSize (e) {
+        originalSize.widthEl.innerText = e.target.naturalWidth + 'px x ';
+        originalSize.heightEl.innerText = e.target.naturalHeight + 'px';
+    }
+
 })(window, document);
