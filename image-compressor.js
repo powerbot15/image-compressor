@@ -86,6 +86,18 @@
 
         compressWithQuality : function () {
 
+//==============temporary fix for upscale images=========================
+
+            if(this.image.naturalWidth < this.settings.toWidth && this.image.naturalHeight < this.settings.toHeight){
+
+                this.compressImage();
+
+                return;
+
+            }
+
+//=========================================================================
+
             this.firstCompress();
 
             this.naturalAR = this.image.naturalWidth / this.image.naturalHeight;

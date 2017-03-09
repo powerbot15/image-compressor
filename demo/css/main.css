@@ -1,0 +1,10 @@
+h1, div{
+    text-align: center;
+    margin: 0;
+    padding:10px;
+}
+
+#original{
+    max-width: 400px;
+    max-height: 400px;
+}
