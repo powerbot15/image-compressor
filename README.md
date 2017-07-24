@@ -72,3 +72,9 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   
   
   **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality). **Default : `"low"`**     
+
+## NOTE
+
+If `toWidth` or `toHeight` did not specified, compressor will use original aspect ratio of an image and will combine it with available `toWidth` or `toHeight`
+
+So for example original image size of 2000x1000 and specified `toWidth : 500` result `toHeight = 500 * 1000 / 2000`  
