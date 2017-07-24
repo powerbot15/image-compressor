@@ -10,8 +10,8 @@
     function ImageCompressor () {
 
         this.settings = {
-            toWidth : 100,
-            toHeight : 100,
+            toWidth : null,
+            toHeight : null,
             mimeType : 'image/png',
             speed : 'low',
             mode : 'strict',
@@ -34,6 +34,8 @@
 
         imageLoaded : function () {
 
+            this.checkSizes();
+
             if(this.settings.speed == 'low'){
 
                 this.compressWithQuality();
@@ -52,8 +54,8 @@
         },
 
         run : function (src, settings, callback) {
-            this.settings.toWidth = settings.toWidth || this.settings.toWidth;
-            this.settings.toHeight = settings.toHeight || this.settings.toHeight;
+            this.settings.toWidth = settings.toWidth; //|| this.settings.toWidth;
+            this.settings.toHeight = settings.toHeight; //|| this.settings.toHeight;
             this.settings.mimeType = settings.mimeType || this.settings.mimeType;
             this.settings.mode = (settings.mode == 'strict' || settings.mode == 'stretch') ?  settings.mode : this.settings.mode;
             this.settings.speed = settings.speed || this.settings.speed;
@@ -218,6 +220,24 @@
 
                 this.context.drawImage(this.image, offsetX, offsetY, compressedWidth, this.settings.toHeight);
 
+            }
+
+        },
+
+        checkSizes : function () {
+            var aspectRatio = this.image.naturalWidth / this.image.naturalHeight;
+            if(!this.settings.toWidth && !this.settings.toHeight){
+                this.settings.toWidth = 100;
+                this.settings.toHeight = 100;
+                return;
+            }
+            if(!this.settings.toWidth){
+                this.settings.toWidth = this.settings.toHeight * aspectRatio;
+                return;
+            }
+
+            if(!this.settings.toHeight){
+                this.settings.toHeight = this.settings.toWidth / aspectRatio;
             }
 
         }
