@@ -1,6 +1,6 @@
 /**
  * Author: Oleh Kastornov
- * ver 1.1.3
+ * ver 1.1.4
  * Ukraine
  */
 
@@ -15,6 +15,7 @@
             mimeType : 'image/png',
             speed : 'low',
             mode : 'strict',
+            grayScale : false,
             quality : 1
         };
 
@@ -59,6 +60,7 @@
             this.settings.mimeType = settings.mimeType || this.settings.mimeType;
             this.settings.mode = (settings.mode == 'strict' || settings.mode == 'stretch') ?  settings.mode : this.settings.mode;
             this.settings.speed = settings.speed || this.settings.speed;
+            this.settings.grayScale = settings.hasOwnProperty('grayScale') ? settings.grayScale : this.settings.grayScale;
             this.imageReceiver = callback;
 
             this.image.src = src;
@@ -78,6 +80,10 @@
             }
             if(this.settings.mode == 'stretch'){
                 this.stretchResize();
+            }
+
+            if(this.settings.grayScale){
+                this.grayScale();
             }
 
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
@@ -114,6 +120,10 @@
             }
             if(this.settings.mode == 'stretch'){
                 this.stretchResize();
+            }
+
+            if(this.settings.grayScale){
+                this.grayScale();
             }
 
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
@@ -239,6 +249,26 @@
             if(!this.settings.toHeight){
                 this.settings.toHeight = this.settings.toWidth / aspectRatio;
             }
+
+        },
+
+        grayScale : function () {
+            var imgData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            var pixels = imgData.data;
+            var grayValue;
+
+            for (var i = 0, n = imgData.data.length; i < n; i += 4) {
+                if(imgData.data[i + 3] == 0){
+                    continue;
+                }
+                grayValue = (imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2]) / 3;
+
+                imgData.data[i] = grayValue;
+                imgData.data[i + 1] = grayValue;
+                imgData.data[i + 2] = grayValue;
+            }
+
+            this.context.putImageData(imgData, 0, 0);
 
         }
 

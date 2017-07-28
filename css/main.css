@@ -54,13 +54,18 @@ input[type="file"]{
 .settings{
     /*background: #f9f5a1;*/
 }
-.settings input{
+.settings input[type="text"]{
     display: block;
     width: calc(100% - 20px);
     padding: 5px;
     margin: 10px 5px;
     border-radius: 3px;
     border: 1px solid #53aea2;
+}
+.settings .grayscale-wrap{
+
+    margin: 10px 0;
+
 }
 
 .compressed-img{

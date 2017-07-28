@@ -4,6 +4,7 @@
         fileReader = new FileReader,
         widthEl = doc.getElementById('width'),
         heightEl = doc.getElementById('height'),
+        grayScale = doc.getElementById('grayscale'),
         compress = doc.getElementById('compress'),
         selectImgBtn = doc.querySelector('.image-selector'),
         fileInput = doc.getElementById('image'),
@@ -62,7 +63,8 @@
                 toHeight : height,
                 mimeType : 'image/jpeg',
                 quality : 1,
-                speed: speedEl.value
+                speed : speedEl.value,
+                grayScale : grayScale.checked
             }, resultProcessor);
 
             return;
