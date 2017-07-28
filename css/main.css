@@ -1,4 +1,4 @@
-h1, div{
+h1, .content-wrap{
     text-align: center;
     margin: 10px 0;
     padding:10px;
@@ -7,6 +7,10 @@ h1, div{
 .content-wrap{
     width:1080px;
     margin:auto;
+}
+.original-img{
+    margin:10px 0;
+    height: 400px;
 }
 
 .description{
@@ -22,9 +26,9 @@ input[type="file"]{
     display: none;
 }
 
-.image-selector,
-.image-selector:active,
-.image-selector:focus{
+.btn,
+.btn:active,
+.btn:focus{
 
     background: #41b3bd;
     color: white;
@@ -35,4 +39,25 @@ input[type="file"]{
     padding: 10px 15px;
     border-radius: 3px;
 
+}
+.column-50{
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    width: calc(50% - 40px);
+    height: 100%;
+}
+.image-with-size{
+    background: #f0eb80;
+}
+.settings{
+    background: #f9f5a1;
+}
+.settings input{
+    display: block;
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin: 10px 5px;
+    border-radius: 3px;
+    border: 1px solid #53aea2;
 }
