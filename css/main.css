@@ -45,13 +45,14 @@ input[type="file"]{
     vertical-align: top;
     white-space: nowrap;
     width: calc(50% - 40px);
+    border: 1px solid #f0eb80;
     height: 100%;
 }
 .image-with-size{
-    background: #f0eb80;
+    /*background: #f0eb80;*/
 }
 .settings{
-    background: #f9f5a1;
+    /*background: #f9f5a1;*/
 }
 .settings input{
     display: block;
@@ -60,4 +61,13 @@ input[type="file"]{
     margin: 10px 5px;
     border-radius: 3px;
     border: 1px solid #53aea2;
+}
+
+.compressed-img{
+    border: 1px solid #f0eb80;
+
+}
+.compressed-img img{
+    max-width: 400px;
+    max-height: 400px;
 }
