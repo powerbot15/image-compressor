@@ -1,6 +1,6 @@
 /**
  * Author: Oleh Kastornov
- * ver 1.1.4
+ * ver 1.1.5
  * Ukraine
  */
 
