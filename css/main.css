@@ -1,10 +1,38 @@
 h1, div{
     text-align: center;
-    margin: 0;
+    margin: 10px 0;
     padding:10px;
+}
+
+.content-wrap{
+    width:1080px;
+    margin:auto;
+}
+
+.description{
+    font-size: 18px;
 }
 
 #original{
     max-width: 400px;
     max-height: 400px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.image-selector,
+.image-selector:active,
+.image-selector:focus{
+
+    background: #41b3bd;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+
 }

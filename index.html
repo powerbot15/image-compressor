@@ -6,30 +6,36 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<h1>Image Compressor</h1>
-<div>
-    <label for="image">Select image</label> <input type="file" id="image">
-</div>
-<div class="original-img">
-    <img id="original" src="#" alt="Original image to compress">
-    <div class="original-size">
-        <span id="origin-width"></span>
-        <span id="origin-height"></span>
-    </div>
-</div>
 
-<div>
-    <label for="width">Width : </label> <input type="text" id="width">
-    <label for="height">Height : </label> <input type="text" id="height">
-    <label for="speed">Quality : </label>
-    <select name="speed" id="speed">
-        <option value="low" selected>High</option>
-        <option value="high">Low</option>
-    </select>
-    <a href="#" id="compress"> Compress </a>
-</div>
-<div>
-    <img src="#" alt="Compressed image" id="result">
+<div class="content-wrap">
+    <h1>Image Compressor</h1>
+    <p class="description">Image compressor is a tool for resizing images exactly without a backend. You can try it below</p>
+    <div>
+        <button class="image-selector">Select Image</button>
+        <input type="file" id="image">
+    </div>
+    <div class="original-img">
+        <img id="original" src="img/placeholder.png" alt="Original image to compress" title="Original image to compress">
+        <div class="original-size">
+            <span id="origin-width"></span>
+            <span id="origin-height"></span>
+        </div>
+    </div>
+
+    <div>
+        <label for="width">Width : </label> <input type="text" id="width">
+        <label for="height">Height : </label> <input type="text" id="height">
+        <label for="speed">Quality : </label>
+        <select name="speed" id="speed">
+            <option value="low" selected>High</option>
+            <option value="high">Low</option>
+        </select>
+        <a href="#" id="compress"> Compress </a>
+    </div>
+    <div>
+        <img src="img/placeholder.png" alt="Compressed image" title="Compressed image" id="result">
+    </div>
+
 </div>
 
 <script src="image-compressor.js"></script>

@@ -5,6 +5,8 @@
         widthEl = doc.getElementById('width'),
         heightEl = doc.getElementById('height'),
         compress = doc.getElementById('compress'),
+        selectImgBtn = doc.querySelector('.image-selector'),
+        fileInput = doc.getElementById('image'),
         originalImg = doc.getElementById('original'),
         speedEl = doc.getElementById('speed'),
         originalSize = {
@@ -25,11 +27,20 @@
     };
     originalImg.addEventListener('load', setOriginalSize);
 
-    doc.getElementById('image').addEventListener('change', function (e) {
+    selectImgBtn.addEventListener('click', function (e) {
+
+        fireClick(fileInput);
+
+    }, false);
+
+    fileInput.addEventListener('change', function (e) {
 
         file = e.target.files.length ? e.target.files[0] : null;
         if(file){
             fileReader.readAsDataURL(file);
+        }
+        else{
+            originalImg.src = 'img/placeholder.png';
         }
     }, false);
 
@@ -67,5 +78,20 @@
         originalSize.widthEl.innerText = e.target.naturalWidth + 'px x ';
         originalSize.heightEl.innerText = e.target.naturalHeight + 'px';
     }
+
+    function fireClick(node){
+
+        if (document.createEvent) {
+            var evt = document.createEvent('MouseEvents');
+            evt.initEvent('click', true, true);
+            node.dispatchEvent(evt);
+        } else if (document.createEventObject) {
+            node.fireEvent('onclick') ;
+        } else if (typeof node.onclick == 'function') {
+            node.onclick();
+        }
+
+    }
+
 
 })(window, document);
