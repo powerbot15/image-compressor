@@ -71,7 +71,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   
   **`compressorSettings.quality`** : Quality of the result (compressed/stretched) image, allowed values `0-1` with step `0.1`. So `0.5` or `0.8` - correct values , `0.35` or `2` - incorrect values, **default : `1`**
   
-  **`grayScale`** : If you need apply grayscale filter on pixels of compressed image, just set this parameter to true. **Default : false**
+  **`compressorSettings.grayScale`** : If you need apply grayscale filter on pixels of compressed image, just set this parameter to true. **Default : false**
   
   **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality). **Default : `"low"`**     
 
