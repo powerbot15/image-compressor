@@ -65,6 +65,7 @@ input[type="file"]{
 
 .compressed-img{
     border: 1px solid #f0eb80;
+    margin-top: 10px;
 
 }
 .compressed-img img{
