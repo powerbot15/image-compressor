@@ -32,6 +32,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             mode : 'strict',
             quality : 0.6,
             grayScale : true,
+            sepia : true,
             speed : 'low'
         };
     
@@ -71,12 +72,20 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   
   **`compressorSettings.quality`** : Quality of the result (compressed/stretched) image, allowed values `0-1` with step `0.1`. So `0.5` or `0.8` - correct values , `0.35` or `2` - incorrect values, **default : `1`**
   
-  **`compressorSettings.grayScale`** : If you need apply grayscale filter on pixels of compressed image, just set this parameter to true. **Default : false**
+  **`compressorSettings.grayScale`** : If you need to apply grayscale filter to pixels of the compressed image, just set this parameter to true. **Default : false**
+  
+  **`compressorSettings.sepia`** : If you need to apply grayscale filter to pixels of the compressed image, just set this parameter to true. **Default : false**
   
   **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality). **Default : `"low"`**     
 
-## NOTE
+### Width and Height NOTE
 
 If `toWidth` or `toHeight` did not specified, compressor will use original aspect ratio of an image and will combine it with available `toWidth` or `toHeight`
 
-So for example original image size of 2000x1000 and specified `toWidth : 500` result `toHeight = 500 * 1000 / 2000`  
+So for example if an original image size will be 2000x1000 and specified `toWidth : 500` result `toHeight` will be calculated as `500 * 1000 / 2000`
+  
+At least one of two above settings must be set to make compressor working correctly
+  
+### Filters NOTE
+  
+You can apply only one filter from available(grayscale, sepia) to the compressed image. If selected both of them at a time, compressor will use only `grayscale` filter   

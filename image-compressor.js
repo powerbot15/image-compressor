@@ -1,6 +1,6 @@
 /**
  * Author: Oleh Kastornov
- * ver 1.1.5
+ * ver 1.1.6
  * Ukraine
  */
 
@@ -16,6 +16,7 @@
             speed : 'low',
             mode : 'strict',
             grayScale : false,
+            sepia : false,
             quality : 1
         };
 
@@ -61,6 +62,7 @@
             this.settings.mode = (settings.mode == 'strict' || settings.mode == 'stretch') ?  settings.mode : this.settings.mode;
             this.settings.speed = settings.speed || this.settings.speed;
             this.settings.grayScale = settings.hasOwnProperty('grayScale') ? settings.grayScale : this.settings.grayScale;
+            this.settings.sepia = settings.hasOwnProperty('sepia') ? settings.sepia : this.settings.sepia;
             this.imageReceiver = callback;
 
             this.image.src = src;
@@ -84,6 +86,11 @@
 
             if(this.settings.grayScale){
                 this.grayScale();
+            }
+            else{
+                if(this.settings.sepia){
+                    this.sepia();
+                }
             }
 
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
@@ -120,6 +127,11 @@
 
             if(this.settings.grayScale){
                 this.grayScale();
+            }
+            else{
+                if(this.settings.sepia){
+                    this.sepia();
+                }
             }
 
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
@@ -262,6 +274,24 @@
                 imgData.data[i] = grayValue;
                 imgData.data[i + 1] = grayValue;
                 imgData.data[i + 2] = grayValue;
+            }
+
+            this.context.putImageData(imgData, 0, 0);
+
+        },
+
+        sepia : function () {
+            var imgData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            var pixels = imgData.data;
+            var grayValue;
+
+            for (var i = 0, n = imgData.data.length; i < n; i += 4) {
+                if(imgData.data[i + 3] == 0){
+                    continue;
+                }
+                imgData.data[i] = (imgData.data[i] * .393) + (imgData.data[i + 1] *.769) + (imgData.data[i + 2] * .189);
+                imgData.data[i + 1] = (imgData.data[i] * .349) + (imgData.data[i + 1] *.686) + (imgData.data[i + 2] * .168);
+                imgData.data[i + 2] = (imgData.data[i] * .272) + (imgData.data[i + 1] *.534) + (imgData.data[i + 2] * .131);
             }
 
             this.context.putImageData(imgData, 0, 0);

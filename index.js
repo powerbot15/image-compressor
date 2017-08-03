@@ -4,7 +4,6 @@
         fileReader = new FileReader,
         widthEl = doc.getElementById('width'),
         heightEl = doc.getElementById('height'),
-        grayScale = doc.getElementById('grayscale'),
         compress = doc.getElementById('compress'),
         selectImgBtn = doc.querySelector('.image-selector'),
         fileInput = doc.getElementById('image'),
@@ -17,7 +16,8 @@
         width,
         height,
         file,
-        imageRead;
+        imageRead,
+        filter;
 
     fileReader.onloadend = function () {
 
@@ -56,6 +56,9 @@
 
     compress.addEventListener('click', function (e) {
         e.preventDefault();
+
+        filter = getFilter();
+
         if(file && (/\.png|\.jpg|\.jpeg/).test(file.name)){
 
             compressor.run(imageRead, {
@@ -64,7 +67,8 @@
                 mimeType : 'image/jpeg',
                 quality : 1,
                 speed : speedEl.value,
-                grayScale : grayScale.checked
+                grayScale : filter == 'grayscale',
+                sepia: filter == 'sepia'
             }, resultProcessor);
 
             return;
@@ -93,6 +97,13 @@
             node.onclick();
         }
 
+    }
+
+    function getFilter() {
+
+        var filterRadio = document.querySelector('input[name="filter"]:checked');
+
+        return filterRadio.value;
     }
 
 
