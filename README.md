@@ -74,7 +74,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   
   **`compressorSettings.grayScale`** : If you need to apply grayscale filter to pixels of the compressed image, just set this parameter to true. **Default : false**
   
-  **`compressorSettings.sepia`** : If you need to apply grayscale filter to pixels of the compressed image, just set this parameter to true. **Default : false**
+  **`compressorSettings.sepia`** : If you need to apply sepia filter to pixels of the compressed image, just set this parameter to true. **Default : false**
   
   **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality). **Default : `"low"`**     
 
