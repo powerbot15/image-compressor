@@ -72,22 +72,28 @@
 
 
     compress.addEventListener('click', function (e) {
+        var settings;
         e.preventDefault();
 
         filter = getFilter();
 
         if(file && (/\.png|\.jpg|\.jpeg/).test(file.name)){
 
-            compressor.run(imageRead, {
+            settings = {
                 toWidth : width,
                 toHeight : height,
                 mimeType : 'image/jpeg',
                 quality : 1,
                 speed : speedEl.value,
                 grayScale : filter == 'grayscale',
-                sepia: filter == 'sepia',
-                threshold : parseInt(filter)
-            }, resultProcessor);
+                sepia: filter == 'sepia'
+            };
+
+            if(parseInt(filter)){
+                settings.threshold = parseInt(filter)
+            }
+
+            compressor.run(imageRead, settings, resultProcessor);
 
             return;
         }
