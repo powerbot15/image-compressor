@@ -19,7 +19,7 @@
     };
     function ImageCompressor () {
 
-        this.settings = COMPRESSOR_DEFAULTS;
+        this.settings = JSON.parse(JSON.stringify(COMPRESSOR_DEFAULTS));
 
         this.canvas = doc.createElement('canvas');
         this.image = doc.createElement('img');
@@ -57,7 +57,7 @@
         },
 
         run : function (src, settings, callback) {
-            this.settings = COMPRESSOR_DEFAULTS;
+            this.settings = JSON.parse(JSON.stringify(COMPRESSOR_DEFAULTS));
             this.settings.toWidth = settings.toWidth; //|| this.settings.toWidth;
             this.settings.toHeight = settings.toHeight; //|| this.settings.toHeight;
             this.settings.mimeType = settings.mimeType || this.settings.mimeType;
