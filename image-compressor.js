@@ -6,20 +6,20 @@
 
 
 (function(win, doc){
-
+    var COMPRESSOR_DEFAULTS = {
+        toWidth : null,
+        toHeight : null,
+        mimeType : 'image/png',
+        speed : 'low',
+        mode : 'strict',
+        grayScale : false,
+        sepia : false,
+        threshold : false,
+        quality : 1
+    };
     function ImageCompressor () {
 
-        this.settings = {
-            toWidth : null,
-            toHeight : null,
-            mimeType : 'image/png',
-            speed : 'low',
-            mode : 'strict',
-            grayScale : false,
-            sepia : false,
-            threshold : false,
-            quality : 1
-        };
+        this.settings = COMPRESSOR_DEFAULTS;
 
         this.canvas = doc.createElement('canvas');
         this.image = doc.createElement('img');
@@ -57,6 +57,7 @@
         },
 
         run : function (src, settings, callback) {
+            this.settings = COMPRESSOR_DEFAULTS;
             this.settings.toWidth = settings.toWidth; //|| this.settings.toWidth;
             this.settings.toHeight = settings.toHeight; //|| this.settings.toHeight;
             this.settings.mimeType = settings.mimeType || this.settings.mimeType;
@@ -64,9 +65,8 @@
             this.settings.speed = settings.speed || this.settings.speed;
             this.settings.grayScale = settings.hasOwnProperty('grayScale') ? settings.grayScale : this.settings.grayScale;
             this.settings.sepia = settings.hasOwnProperty('sepia') ? settings.sepia : this.settings.sepia;
-            this.settings.threshold = settings.threshold ? settings.threshold : this.settings.threshold;
+            this.settings.threshold = settings.hasOwnProperty('threshold') ? settings.threshold : this.settings.threshold;
             this.imageReceiver = callback;
-
             this.image.src = src;
         },
 
