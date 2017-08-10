@@ -33,6 +33,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             quality : 0.6,
             grayScale : true,
             sepia : true,
+            threshold : 127,
             speed : 'low'
         };
     
@@ -76,6 +77,8 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   
   **`compressorSettings.sepia`** : If you need to apply sepia filter to pixels of the compressed image, just set this parameter to true. **Default : false**
   
+  **`compressorSettings.threshold`** : Pixel intensity edge to set black and white. Pixels that has intensity larger then number specified in this setting will be converted to white color, if smaller - pixel become black **Default : false**
+  
   **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality). **Default : `"low"`**     
 
 ### Width and Height NOTE
@@ -88,4 +91,4 @@ At least one of two above settings must be set to make compressor working correc
   
 ### Filters NOTE
   
-You can apply only one filter from available(grayscale, sepia) to the compressed image. If selected both of them at a time, compressor will use only `grayscale` filter   
+You can apply only one filter from available(grayscale, sepia, threshold) to the compressed image. If selected both of them at a time, compressor will use only `grayscale` filter   

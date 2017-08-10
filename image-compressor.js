@@ -17,6 +17,7 @@
             mode : 'strict',
             grayScale : false,
             sepia : false,
+            threshold : false,
             quality : 1
         };
 
@@ -63,6 +64,7 @@
             this.settings.speed = settings.speed || this.settings.speed;
             this.settings.grayScale = settings.hasOwnProperty('grayScale') ? settings.grayScale : this.settings.grayScale;
             this.settings.sepia = settings.hasOwnProperty('sepia') ? settings.sepia : this.settings.sepia;
+            this.settings.threshold = settings.threshold ? settings.threshold : this.settings.threshold;
             this.imageReceiver = callback;
 
             this.image.src = src;
@@ -84,14 +86,7 @@
                 this.stretchResize();
             }
 
-            if(this.settings.grayScale){
-                this.grayScale();
-            }
-            else{
-                if(this.settings.sepia){
-                    this.sepia();
-                }
-            }
+            this.imageFilters();
 
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
 
@@ -125,14 +120,7 @@
                 this.stretchResize();
             }
 
-            if(this.settings.grayScale){
-                this.grayScale();
-            }
-            else{
-                if(this.settings.sepia){
-                    this.sepia();
-                }
-            }
+            this.imageFilters();
 
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
 
@@ -296,6 +284,44 @@
 
             this.context.putImageData(imgData, 0, 0);
 
+        },
+
+        threshold : function () {
+            var imgData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            var pixels = imgData.data;
+            var averageIntensity;
+            var thresholdVal;
+            var grayValue;
+
+            for (var i = 0, n = imgData.data.length; i < n; i += 4) {
+                if(imgData.data[i + 3] == 0){
+                    continue;
+                }
+                averageIntensity = (imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2]) / 3;
+                thresholdVal = averageIntensity > this.settings.threshold ? 255 : 0;
+                imgData.data[i] = thresholdVal;
+                imgData.data[i + 1] = thresholdVal;
+                imgData.data[i + 2] = thresholdVal;
+            }
+
+            this.context.putImageData(imgData, 0, 0);
+
+        },
+
+        imageFilters : function () {
+
+            if(this.settings.grayScale){
+                this.grayScale();
+                return;
+            }
+            if(this.settings.sepia){
+                this.sepia();
+                return;
+            }
+            if(this.settings.threshold){
+                this.threshold();
+                return;
+            }
         }
 
     };

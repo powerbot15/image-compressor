@@ -9,6 +9,7 @@
         fileInput = doc.getElementById('image'),
         originalImg = doc.getElementById('original'),
         speedEl = doc.getElementById('speed'),
+        thresholdVal = doc.getElementById('threshold-val'),
         originalSize = {
             widthEl : doc.getElementById('origin-width'),
             heightEl : doc.getElementById('origin-height')
@@ -17,7 +18,23 @@
         height,
         file,
         imageRead,
-        filter;
+        filter,
+        filterElements;
+
+    filterElements = doc.querySelectorAll('[name="filter"]');
+
+    for(var i = 0; i < filterElements.length; i ++){
+
+        filterElements[i].addEventListener('change', function () {
+            if(this.id == 'threshold'){
+                thresholdVal.style.display = 'initial';
+            }
+            else{
+                thresholdVal.style.display = 'none';
+            }
+        });
+
+    }
 
     fileReader.onloadend = function () {
 
@@ -68,7 +85,8 @@
                 quality : 1,
                 speed : speedEl.value,
                 grayScale : filter == 'grayscale',
-                sepia: filter == 'sepia'
+                sepia: filter == 'sepia',
+                threshold : parseInt(filter)
             }, resultProcessor);
 
             return;
@@ -103,6 +121,11 @@
 
         var filterRadio = document.querySelector('input[name="filter"]:checked');
 
+        if(filterRadio.id == 'threshold'){
+
+            return thresholdVal.value;
+
+        }
         return filterRadio.value;
     }
 
