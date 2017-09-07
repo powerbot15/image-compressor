@@ -13,7 +13,7 @@
         grayScale : false,
         sepia : false,
         threshold : false,
-        vReverse : false,
+        vReverse : true,
         hReverse : false,
         quality : 1
     };
@@ -46,6 +46,8 @@
             this.settings.grayScale = settings.hasOwnProperty('grayScale') ? settings.grayScale : this.settings.grayScale;
             this.settings.sepia = settings.hasOwnProperty('sepia') ? settings.sepia : this.settings.sepia;
             this.settings.threshold = settings.hasOwnProperty('threshold') ? settings.threshold : this.settings.threshold;
+            this.settings.hReverse = settings.hasOwnProperty('hReverse') ? settings.hReverse : this.settings.hReverse;
+            this.settings.vReverse = settings.hasOwnProperty('vReverse') ? settings.vReverse : this.settings.vReverse;
             this.imageReceiver = callback;
             this.image.src = src;
         },
@@ -53,6 +55,10 @@
             if(this.settings.speed !== 'high'){
                 this.compressWithQuality();
             }
+
+            this.compressAddOn();
+        },
+        compressAddOn : function () {
             this.naturalAR = this.image.naturalWidth / this.image.naturalHeight;
             this.compressedAR = this.settings.toWidth / this.settings.toHeight;
             this.canvas.width = this.settings.toWidth;
@@ -66,12 +72,14 @@
                 this.stretchResize();
             }
             this.imageFilters();
+            this.imageReverse();
             this.imageReceiver(this.canvas.toDataURL(this.settings.mimeType, this.settings.quality));
             this.compressedCanv = null;
+
         },
         compressWithQuality : function () {
             if(this.image.naturalWidth <= this.settings.toWidth && this.image.naturalHeight <= this.settings.toHeight){
-                this.compressImage();
+                this.compressAddOn();
                 return;
             }
             this.firstCompress();
@@ -212,7 +220,49 @@
                 this.threshold();
                 return;
             }
+        },
+
+        imageReverse : function () {
+
+            if(this.settings.vReverse){
+
+                this.vReverse();
+
+            }
+
+            if(this.settings.hReverse){
+
+                this.hReverse();
+
+            }
+
+        },
+
+        vReverse : function () {
+
+            var imgData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            var pixels = imgData.data;
+            var reversedData = this.context.createImageData(this.canvas.width, this.canvas.height);
+            // var chunk = [];
+            var vIndex = this.canvas.height;
+            var fullIndex = 0;
+            var reversedIndex = 0;
+            var hCount = this.canvas.width * 4;
+            for(var i = this.canvas.height - 1; i >= 0; i--){
+                fullIndex = i * hCount;
+                for(var j = 0; j < hCount; j += 4){
+                    reversedData.data[reversedIndex] = pixels[fullIndex + j];
+                    reversedData.data[reversedIndex + 1] = pixels[fullIndex + j + 1];
+                    reversedData.data[reversedIndex + 2] = pixels[fullIndex + j + 2];
+                    reversedData.data[reversedIndex + 3] = pixels[fullIndex + j + 3];
+                    reversedIndex += 4;
+                }
+            }
+
+            this.context.putImageData(reversedData, 0, 0, 0, 0, this.canvas.width, this.canvas.height);
+
         }
+
     };
     win.ImageCompressor = ImageCompressor;
 })(window, document);
