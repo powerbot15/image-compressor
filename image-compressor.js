@@ -13,7 +13,7 @@
         grayScale : false,
         sepia : false,
         threshold : false,
-        vReverse : true,
+        vReverse : false,
         hReverse : false,
         quality : 1
     };
