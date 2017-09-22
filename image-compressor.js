@@ -248,7 +248,7 @@
             var fullIndex = 0;
             var reversedIndex = 0;
             var hCount = this.canvas.width * 4;
-            for(var i = this.canvas.height - 1; i >= 0; i--){
+            for(var i = vIndex - 1; i >= 0; i--){
                 fullIndex = i * hCount;
                 for(var j = 0; j < hCount; j += 4){
                     reversedData.data[reversedIndex] = pixels[fullIndex + j];
