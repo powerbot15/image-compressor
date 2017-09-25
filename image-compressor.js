@@ -14,7 +14,7 @@
         sepia : false,
         threshold : false,
         vReverse : false,
-        hReverse : false,
+        hReverse : true,
         quality : 1
     };
     function ImageCompressor () {
@@ -256,6 +256,33 @@
                     reversedData.data[reversedIndex + 2] = pixels[fullIndex + j + 2];
                     reversedData.data[reversedIndex + 3] = pixels[fullIndex + j + 3];
                     reversedIndex += 4;
+                }
+            }
+
+            this.context.putImageData(reversedData, 0, 0, 0, 0, this.canvas.width, this.canvas.height);
+
+        },
+
+        hReverse : function () {
+
+            var imgData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            var pixels = imgData.data;
+            var reversedData = this.context.createImageData(this.canvas.width, this.canvas.height);
+            var vIndex = this.canvas.height;
+            var fullIndex = 0;
+            var loopWidth = 0;
+            var reversedIndex = 0;
+            var hCount = this.canvas.width * 4;
+            for(var i = hCount - 4; i > 0; i-=4){
+                for(var j = 0; j < vIndex; j++){
+                    loopWidth = j * hCount;
+                    fullIndex = loopWidth + i;
+                    reversedIndex = loopWidth + hCount - i;
+                    reversedData.data[reversedIndex] = pixels[fullIndex];
+                    reversedData.data[reversedIndex + 1] = pixels[fullIndex + 1];
+                    reversedData.data[reversedIndex + 2] = pixels[fullIndex + 2];
+                    reversedData.data[reversedIndex + 3] = pixels[fullIndex + 3];
+
                 }
             }
 
