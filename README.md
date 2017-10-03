@@ -34,6 +34,8 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
             grayScale : true,
             sepia : true,
             threshold : 127,
+            vReverse : true,
+            hReverse : true,
             speed : 'low'
         };
     
@@ -79,6 +81,10 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
   
   **`compressorSettings.threshold`** : Pixel intensity edge to set black and white. Pixels that has intensity larger then number specified in this setting will be converted to white color, if smaller - pixel become black **Default : false**
   
+  **`compressorSettings.vReverse`** : Applies vertical reverse to the result image **Default : false**
+  
+  **`compressorSettings.hReverse`** : Applies horizontal reverse to the result image **Default : false**
+  
   **`compressorSettings.speed`** : Compression speed. Allowed values **`"low"`**, **`"high"`**. In the case of the `"low"` value quality lossless algorithm is being applied(slower, many steps of compression), `"high"` value compresses an image just in one step(faster but with the large delta between original and compressed sizes result image has poor quality). **Default : `"low"`**     
 
 ### Width and Height NOTE
@@ -91,4 +97,9 @@ At least one of two above settings must be set to make compressor working correc
   
 ### Filters NOTE
   
-You can apply only one filter from available(grayscale, sepia, threshold) to the compressed image. If selected both of them at a time, compressor will use only `grayscale` filter   
+You can apply only one filter from available(grayscale, sepia, threshold) to the compressed image. If selected both of them at a time, compressor will use only `grayscale` filter
+   
+### Reversing NOTE
+
+Vertical and horizontal reverses can be applied together. If selected both of them, result image will be reversed diagonally.   
+   

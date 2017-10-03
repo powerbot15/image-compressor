@@ -14,7 +14,7 @@
         sepia : false,
         threshold : false,
         vReverse : false,
-        hReverse : true,
+        hReverse : false,
         quality : 1
     };
     function ImageCompressor () {

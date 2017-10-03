@@ -19,6 +19,7 @@
         file,
         imageRead,
         filter,
+        postEffect,
         filterElements;
 
     filterElements = doc.querySelectorAll('[name="filter"]');
@@ -77,6 +78,8 @@
 
         filter = getFilter();
 
+        postEffect = getPostEffect();
+
         if(file && (/\.png|\.jpg|\.jpeg/).test(file.name)){
 
             settings = {
@@ -86,7 +89,9 @@
                 quality : 1,
                 speed : speedEl.value,
                 grayScale : filter == 'grayscale',
-                sepia: filter == 'sepia'
+                sepia: filter == 'sepia',
+                vReverse : postEffect == 'vReverse' || postEffect == 'both',
+                hReverse : postEffect == 'hReverse' || postEffect == 'both'
             };
 
             if(parseInt(filter)){
@@ -134,6 +139,27 @@
         }
         return filterRadio.value;
     }
+
+    function getPostEffect() {
+
+        var postFilters = document.querySelectorAll('input[name="post-effect"]:checked');
+
+        if(postFilters.length == 2){
+
+            return 'both';
+
+        }
+
+        if(postFilters.length == 1){
+
+            return postFilters[0].value;
+
+        }
+
+        return 'none';
+    }
+
+
 
 
 })(window, document);
