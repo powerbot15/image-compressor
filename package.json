@@ -1,6 +1,6 @@
 {
   "name": "image-compressor",
-  "version": "1.2.0",
+  "version": "2.0",
   "description": "Frontend javascript module for resizing and compressing images",
   "main": "image-compressor.js",
   "scripts": {
