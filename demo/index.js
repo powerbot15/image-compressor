@@ -1,6 +1,6 @@
 (function (win, doc) {
 
-    var compressor = new ImageCompressor,
+    var compressor = new ImageCompressor.ImageCompressor,
         fileReader = new FileReader,
         widthEl = doc.getElementById('width'),
         heightEl = doc.getElementById('height'),
