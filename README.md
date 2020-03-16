@@ -13,7 +13,7 @@
 **Image compressor** uses canvas in the background for resizing operations. Result image has no dimensional distortions, original image is being compressed with the original aspect ratio. 
 Original image is centered in the result image. Free space can appear aside of result image due to possible different aspect ratios of original and compressed images. 
 Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. For `image/png` free space aside result image filled transparently.
-[Demo](http://powerbot15.github.io/image-compressor/)
+[Demo](https://powerbot15.github.io/image-compressor/)
 
 **Image compressor** uses step-down algorithm for scaling down images. That means an image gets compressed for some discrete steps. Within each step image gets compressed by a half(original size : `width`, `height`, size after first step is `width / 2`, `height / 2` ). Such stepping allows limited interpolation on compressed image and gives more similar to original image result
 
