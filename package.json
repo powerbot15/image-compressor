@@ -1,14 +1,19 @@
 {
   "name": "image-compressor",
-  "version": "1.2.0",
+  "version": "2.0.1",
   "description": "Frontend javascript module for resizing and compressing images",
-  "main": "image-compressor.js",
+  "main": "dist/image-compressor.js",
   "scripts": {
+    "prepublish": "npm run build",
+    "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/powerbot15/image-compressor.git"
+  },
+  "publishConfig": {
+    "registry":"https://registry.npmjs.org/"
   },
   "keywords": [
     "image resize",
@@ -20,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/powerbot15/image-compressor/issues"
   },
-  "homepage": "https://github.com/powerbot15/image-compressor#readme"
+  "homepage": "https://github.com/powerbot15/image-compressor#readme",
+  "devDependencies": {
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
 }

@@ -1,6 +1,14 @@
 # Image-Compressor
 
 ## Frontend javascript module for resizing and compressing images. No backend libraries required.
+### Version 2.0 released! 
+### Now available as simple `import { ImageCompressor }  from 'image-compressor';`
+**===============================IMPORTANT==============================**
+
+**If you want to use it within ES5 JS project under the `window` object, you should access it by `window.ImageCompressor.ImageCompressor`. Now ImageCompressor is module, so that strange access sequence appeared.**
+
+**However within ES6 JS project after first `import` of the module, `ImageCompressor` will be available at `window.ImageCompressor`**
+**=====================================================================**
 
 **Image compressor** uses canvas in the background for resizing operations. Result image has no dimensional distortions, original image is being compressed with the original aspect ratio. 
 Original image is centered in the result image. Free space can appear aside of result image due to possible different aspect ratios of original and compressed images. 
@@ -15,17 +23,15 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
 
 ## USAGE
 
-### HTML
-
-    <script src="node_modules/image-compressor/image-compressor.js"></script>
     
 ### Javascript
 
 ```javascript
+    import { ImageCompressor } from 'image-compressor';
     
-    var imageCompressor = new ImageCompressor;
+    const imageCompressor = new ImageCompressor;
     
-    var compressorSettings = {
+    const compressorSettings = {
             toWidth : 100,
             toHeight : 100,
             mimeType : 'image/png',
@@ -45,7 +51,7 @@ Such free space is filled with the `#FFFFFF` color for `image/jpeg` mime type. F
     
     
     function proceedCompressedImage (compressedSrc) {
-        ...
+        // ...
     }
 
 ```
