@@ -102,4 +102,3 @@ You can apply only one filter from available(grayscale, sepia, threshold) to the
 ### Reversing NOTE
 
 Vertical and horizontal reverses can be applied together. If selected both of them, result image will be reversed diagonally.   
-   
