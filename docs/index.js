@@ -91,7 +91,9 @@
                 grayScale : filter == 'grayscale',
                 sepia: filter == 'sepia',
                 vReverse : postEffect == 'vReverse' || postEffect == 'both',
-                hReverse : postEffect == 'hReverse' || postEffect == 'both'
+                hReverse : postEffect == 'hReverse' || postEffect == 'both',
+                rotateR : postEffect == 'rotateR' || postEffect == 'both',
+                rotateL : postEffect == 'rotateL' || postEffect == 'both'
             };
 
             if(parseInt(filter)){

@@ -14,6 +14,8 @@ const COMPRESSOR_DEFAULTS = {
   threshold : false,
   vReverse : false,
   hReverse : false,
+  rotateR: false,
+  rotateL: false,
   quality : 1
 };
 export class ImageCompressor {
@@ -272,6 +274,10 @@ export class ImageCompressor {
       }
     }
     this.context.putImageData(reversedData, 0, 0, 0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  rotateRight () {
+    this.context.rotate(Math.PI / 2);
   }
 }
 
