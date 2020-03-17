@@ -87,7 +87,7 @@ export class ImageCompressor {
     this.firstCompress();
   }
   firstCompress () {
-    const canvas = doc.createElement('canvas');
+    const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     let w = this.image.naturalWidth / 2;
     let h = this.image.naturalHeight / 2;
