@@ -49,6 +49,7 @@ export class ImageCompressor {
     this.settings.threshold = settings.hasOwnProperty('threshold') ? settings.threshold : this.settings.threshold;
     this.settings.hReverse = settings.hasOwnProperty('hReverse') ? settings.hReverse : this.settings.hReverse;
     this.settings.vReverse = settings.hasOwnProperty('vReverse') ? settings.vReverse : this.settings.vReverse;
+    this.settings.quality = settings.hasOwnProperty('quality') ? settings.quality : this.settings.quality
     this.imageReceiver = callback;
     this.image.src = src;
   }
