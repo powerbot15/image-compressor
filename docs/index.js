@@ -85,13 +85,13 @@
             settings = {
                 toWidth : width,
                 toHeight : height,
-                mimeType : 'image/jpeg',
+                mimeType : file.name.match(/\.png$/) ? 'image/png' : 'image/jpeg',
                 quality : 1,
                 speed : speedEl.value,
-                grayScale : filter == 'grayscale',
-                sepia: filter == 'sepia',
-                vReverse : postEffect == 'vReverse' || postEffect == 'both',
-                hReverse : postEffect == 'hReverse' || postEffect == 'both'
+                grayScale : filter === 'grayscale',
+                sepia: filter === 'sepia',
+                vReverse : postEffect === 'vReverse' || postEffect === 'both',
+                hReverse : postEffect === 'hReverse' || postEffect === 'both'
             };
 
             if(parseInt(filter)){
